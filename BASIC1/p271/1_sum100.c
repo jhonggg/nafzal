@@ -14,23 +14,29 @@
 
 #define MAX 100
 // [함수 선언 단락]
-int main(int argc, char *argv[]);
+int main(int argc, char* argv[]);
 
 // [함수 정의 단락]
-int main(int argc, char *argv[]){
-    
-    int sum;
-    int number = 1;
-    //1. 숫자가 최댓값보다 작거나 같으면 반복한다.
-    while(number <= MAX){
-        //1.1. 숫자를 증가한다.
-        number++;
-        //1.2. 총합을 계산한다.
-        sum += number;
-    }
-    //2. 총합을 출력한다.
-    printf("총합 : %d", sum);
+int main(int argc, char* argv[]) {
 
-    //3. 끝낸다.
-    return 0;
+	int sum = 0;
+	int number = 1;
+	//1. 숫자가 최댓값보다 작거나 같으면 반복한다.
+	while (number <= MAX) {
+		//1.2. 총합을 계산한다.
+		sum += number;
+		//1.1. 숫자를 증가한다.
+		number++;
+	}
+	/*
+	for(number=1; number <= MAX; nmuber++){
+		sum += number;
+		number++;
+	}
+	*/
+	//2. 총합을 출력한다.
+	printf("총합 : %d", sum);
+
+	//3. 끝낸다.
+	return 0;
 }
