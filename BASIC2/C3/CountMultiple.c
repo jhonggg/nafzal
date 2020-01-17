@@ -38,7 +38,7 @@ int main(int argc, char* argv[]){
         // 2.3. 개수와 7의 배수를 출력한다.
         printf("%d                        %d", count, number);
         
-    } while (number > MAX);
+    } while (number <= MAX);
     count=count-1;
     // 3. 개수를 출력한다.
     printf("7의 배수의 총 개수 : %d", count);
