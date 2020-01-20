@@ -39,4 +39,5 @@ int main(int argc, char* argv[]) {
 	//3.합을 출력한다.
 	printf("1-(1/2)+(1/3)-...+(1/%d)-(1/%d) : %f", MAX-1, MAX, sum);
 	//4.끝낸다.
+	return 0;
 }
