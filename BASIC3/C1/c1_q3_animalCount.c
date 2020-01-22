@@ -10,16 +10,16 @@
  * 참고   자료 : https://jaimemin.tistory.com/261
 **************************************************************************/
 #include<stdio.h>
+#include<stdlib.h>
 
 #define NUMBER 2
 #define INFO 3
 
 void gaussJordan(double head, double heads, double g_foots, double c_foots, double foots);
-
 int main(int argc, char* argv[]) {
 
 	double greets, chickens;
-	double g_foots = 4, c_foots = 1;
+	double g_foots = 4, c_foots = 2;
 	double head = 1;
 	double heads = 46, foots = 140;
 
@@ -37,34 +37,44 @@ void gaussJordan(double head, double heads, double g_foots, double c_foots, doub
 	double animal[NUMBER][INFO] = { {head,head,heads},
 									{g_foots, c_foots, foots} };
 	double divider;
-	double multiple1;
-	double multiple2;
+	double multiple;
 	double tempMatrix[NUMBER][INFO] = {0,0,0,0,0,0};
-
+	double swapMatrix[NUMBER][INFO] = {0,0,0,0,0,0};
+	double animal2[NUMBER][INFO] = {0,0,0,0,0,0};
+	printf("Row1 Scaling and Substract\n");
 	for (int i = 0; i < NUMBER; i++) {
-		/*
-		if (animal[i][0] == 1) {
-			printf("Row1 had already 1\n");
-			break;
-		}
-		*/
 		//1.1.2. 행렬 1의 scaling
-		//tempMatrix에 animal의 1행을 복사
-		//tempMatrix 행을 swap
-		//
-		printf("Row1 Scaling\n");
 		for (int j = 0; j < INFO; j++) {
 			divider = animal[i][0];
 			animal[0][j] = animal[0][j] / divider;
 			//1.1.3. 행렬 2와 행렬 1의 subtract
-			multiple1 = animal[NUMBER - 1][0];
-			tempMatrix[0][j] = animal[0][j] * multiple1;
-			printf("row1Matrix : %.lf ", row1Matrix[0][j]);
+			multiple = animal[NUMBER-1][0];
+			tempMatrix[i][j] = animal[i][j] * multiple;
+			swapMatrix[i][j]=tempMatrix[NUMBER-i-1][j];
+			animal[i][j]-=swapMatrix[i][j];
+			animal2[i][j]=animal[i][j];
+			printf("%.lf ", animal2[i][j]);
 		}
 		printf("\n");
 	}
-	printf("Subtract row1 from row2\n");
 
-	//1.1.4. 행렬 2의 scaling
-	//1.1.5. 행렬 1과 행렬 2의 subtract
+	printf("Row2 Scaling and Substract\n");
+	for (int i = 0; i < NUMBER; i++) {
+		//1.1.2. 행렬 1의 scaling
+		for (int j = 0; j < INFO; j++) {
+			divider = animal2[NUMBER-1][1];
+			printf("%d %d", i, j);
+			printf("\n");
+			animal2[NUMBER-1][j] = (animal2[NUMBER-1][j] / divider);
+			//1.1.3. 행렬 2와 행렬 1의 subtract
+			/*
+			multiple = animal[NUMBER-1][0];
+			tempMatrix[i][j] = animal[i][j] * multiple;
+			swapMatrix[i][j]=tempMatrix[NUMBER-i-1][j];
+			animal[i][j]-=swapMatrix[i][j];
+			*/
+			printf("%.lf ", animal2[i][j]);
+		}
+		printf("\n");
+	}
 }
