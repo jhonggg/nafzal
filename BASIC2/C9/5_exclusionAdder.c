@@ -16,11 +16,9 @@
 #define DIVIDER5 5
 
 int main(int argc, char* argv[]) {
-
 	unsigned long sum = 0;
 	unsigned long remainder = 0;
 	unsigned long number = 1;
-    
 	//2. 수가 최댓값보다 작거나 같을 때9까지 반복한다.
 	while(number <= MAX){
 		//2.1. 3의 배수를 판별한다.
@@ -29,7 +27,6 @@ int main(int argc, char* argv[]) {
 			//2.1.1. 3의 배수가 아니면 5의 배수를 판별한다.
 			remainder=number%DIVIDER5;
 			if(remainder != 0){
-				//2.1.2. 5의 배수가 아니면 합을 더한다.
 				sum+=number;
 			}
 		}
