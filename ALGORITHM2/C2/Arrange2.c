@@ -8,18 +8,18 @@
 #include<stdio.h>
 #include<time.h>
 
-typedef unsigned long int ULong;
+typedef signed long int Long;
 
 int main(int argv, char *argc[]);
-void Input(ULong *firstNumber, ULong *secondNumber, ULong *thirdNumber);
-void Arrage(ULong firstNumber, ULong secondNumber, ULong thirdNumber,
-            ULong *largeNumber, ULong *middleNumber, ULong *smallNumber);
-void Output(ULong firstNumber, ULong secondNumber, ULong thirdNumber);
+void Input(Long *firstNumber, Long *secondNumber, Long *thirdNumber);
+void Arrage(Long firstNumber, Long secondNumber, Long thirdNumber,
+            Long *largeNumber, Long *middleNumber, Long *smallNumber);
+void Output(Long firstNumber, Long secondNumber, Long thirdNumber);
 
 int main(int argv, char *argc[]){
 
-    ULong firstNumber=0, secondNumber=0, thirdNumber=0;
-    ULong largeNumber=0, middleNumber=0, smallNumber=0;
+    Long firstNumber=0, secondNumber=0, thirdNumber=0;
+    Long largeNumber=0, middleNumber=0, smallNumber=0;
 
     Input(&firstNumber, &secondNumber, &thirdNumber);
     Arrage(firstNumber, secondNumber, thirdNumber, &largeNumber, &middleNumber, &smallNumber);
@@ -27,21 +27,38 @@ int main(int argv, char *argc[]){
 
     return 0;
 }
-void Input(ULong *firstNumber, ULong *secondNumber, ULong *thirdNumber){
+void Input(Long *firstNumber, Long *secondNumber, Long *thirdNumber){
     
     printf("please write 3 number : ");
-    scanf_s("%d %d %d", firstNumber, secondNumber, thirdNumber);
+    scanf("%d %d %d", firstNumber, secondNumber, thirdNumber);
 
 }
-void Arrage(ULong firstNumber, ULong secondNumber, ULong thirdNumber,
-            ULong *largeNumber, ULong *middleNumber, ULong *smallNumber){
+void Arrage(Long firstNumber, Long secondNumber, Long thirdNumber,
+            Long *largeNumber, Long *middleNumber, Long *smallNumber){
+
+    Long temp = 0;
 
     *largeNumber = firstNumber;
     *middleNumber = secondNumber;
     *smallNumber = thirdNumber;
-    
+
+    if(*largeNumber < *middleNumber){
+        temp = *largeNumber;
+        *largeNumber = *middleNumber;
+        *middleNumber = temp;
+    }
+    if(*largeNumber < *smallNumber){
+        temp = *largeNumber;
+        *largeNumber = *smallNumber;
+        *smallNumber = temp;
+    }
+    if(*middleNumber < *smallNumber){
+        temp = *middleNumber;
+        *middleNumber = *smallNumber;
+        *smallNumber = temp;
+    }    
 }
 
-void Output(ULong largeNumber, ULong middleNumber, ULong smallNumber){
-
+void Output(Long largeNumber, Long middleNumber, Long smallNumber){
+    printf("largeNumber : %d, middleNumber : %d, smallNumber : %d\n", largeNumber, middleNumber, smallNumber);
 }
