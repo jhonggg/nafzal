@@ -5,29 +5,48 @@
 작  성  자 : 채 종 홍
 작성  일자 : 2020-02-01
 ***********************************************************************************/
-#define MAX 3
-#define CNT 2
-
-typedef signed long int Long;
-
 #include<stdio.h>
 
+#define MAX 3
+
+typedef signed long int Long;
+typedef unsigned long int ULong;
+
 int main(int argc, char *argv[]);
-void Input(Long **numbers);
-void Arrage(Long **numbers);
-void Output(Long numbers);
+void Input(Long (*numbers));
+void Arrage(Long (*numbers));
+void Output(Long *(numbers));
 
 int main(int argc, char *argv[]){
-    Long numbers;
-    
+    Long numbers[MAX];
     Input(numbers);
-    Arrange(numbers);
+    Arrage(numbers);
     Output(numbers);
-
     return 0;
 }
-void Input(Long **numbers){
-    numbers = malloc(sizeof(Long));
+void Input(Long (*numbers)){
+    ULong i;
+    printf("세 번 수를 입력하시오.\n");
+    for(i=0; i < MAX; i++){
+        scanf("%d", numbers+i);
+    }
 }
-void Arrage();
-void Output();
+void Arrage(Long (*numbers)){
+    ULong i, j;
+    Long temp;
+    for(i=0; i<MAX-1; i++){
+        for(j=i+1; j<MAX; j++){
+            if(numbers[i] < numbers[j]){
+                temp = numbers[i];
+                numbers[i] = numbers[j];
+                numbers[j] = temp;
+            }
+        }
+    }
+}
+void Output(Long *(numbers)){
+    ULong i;
+    for(i = 0; i <MAX; i++){
+        printf("%d\n", numbers[i]);
+    }
+}
